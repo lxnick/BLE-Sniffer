@@ -40,5 +40,10 @@ west flash -d build/peripheral --dev-id 1050244398
 west flash -d build/central --dev-id 683519772
 ```
 
+> [!WARNING]
+> These golden-capture test images enable the Bluetooth Core debug key via
+> `CONFIG_BT_USE_DEBUG_KEYS=y`, so a passive sniffer can decrypt ATT traffic.
+> Never use these images or this setting in a production device.
+
 Start the sniffer before resetting the Central DK. Pairing is Just Works and no
 bond is retained, so every reset produces a new pairing exchange.

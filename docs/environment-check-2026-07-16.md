@@ -25,7 +25,7 @@ nRF52840 Dongle 的 USB 與 Nordic DFU bootloader 正常，可以作為本專案
 | tshark/capinfos | PASS | 可讀取 Nordic BLE encapsulation 186 |
 | Wireshark extcap | PASS | bootstrap 成功，COM15 可由 extcap 列舉 |
 | Advertising smoke capture | PASS | 9.823 秒、552 packets、43,185 bytes、channels 37/38/39 |
-| Golden connection capture | PENDING | Peripheral/Central EVK 已分配角色（見下方章節）；尚待燒錄 firmware 並實際擷取 |
+| Golden connection capture | PASS | 2026-08-07 完成 22.015 秒 capture；SMP 9、ATT 17、notification 5 |
 
 ## 判讀
 
@@ -57,8 +57,8 @@ nRF52840 Dongle 的 USB 與 Nordic DFU bootloader 正常，可以作為本專案
 
 | 角色 | 狀態 | 映像 SHA-256 |
 |---|---|---|
-| Peripheral `1050244398` | 已建置、燒錄、verify；UART 確認 `Advertising as BLE-SNIFFER-P` | `7a7fe31fd214092b732e420460938c3604369bdc10c9983af5e699ed4157d2dc` |
-| Central `683519772` | 已建置、燒錄、verify；端到端序列通過 | `3b4567fdcaefe26bdd0aed3b97a897f951b92ac655166d39b13663c7bf4565a2` |
+| Peripheral `1050244398` | 已建置、燒錄、verify；啟用測試用 BLE debug key | `99947feb1f2bdd3219f4ca3f11b7b0c96f001185b2303b83bc1fc8f96441d910` |
+| Central `683519772` | 已建置、燒錄、verify；啟用測試用 BLE debug key | `e0cb04d1d8dbf8668a7b84967e5565d79f5e97290633fa0d2bf4cc58f1020457` |
 
 預期自動測試序列：Advertising → Connect → Just Works Pairing → GATT Write → GATT Read → 5 次 Notify → Disconnect。
 

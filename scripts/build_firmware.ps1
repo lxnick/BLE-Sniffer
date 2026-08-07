@@ -6,11 +6,13 @@ $projectRoot = Split-Path -Parent $PSScriptRoot
 $sdkRoot = 'C:\ncs\v3.3.4'
 $ncsVersion = 'v3.3.4'
 $board = 'nrf52840dk/nrf52840'
-$nrfutil = (Get-Command nrfutil -ErrorAction SilentlyContinue).Source
+$nrfutil = (Get-Command nrfutil.exe -ErrorAction SilentlyContinue).Source
 
 if (-not $nrfutil) {
-    $nrfutil = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\NordicSemiconductor.nrfutil_*\nrfutil.exe" `
-        -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+    $nrfutil = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Recurse `
+        -Filter nrfutil.exe -ErrorAction SilentlyContinue |
+        Where-Object FullName -Like '*NordicSemiconductor.nrfutil*' |
+        Select-Object -First 1 -ExpandProperty FullName
 }
 
 if (-not $nrfutil) { throw 'nrfutil was not found' }

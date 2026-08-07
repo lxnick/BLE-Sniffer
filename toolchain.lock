@@ -1,6 +1,5 @@
-# Provisional M0 baseline discovered and verified with an advertising smoke capture
-# on 2026-07-16. Keep these versions fixed while producing the first end-to-end
-# golden connection capture; promote the baseline after that capture passes.
+# M0 baseline verified with advertising and end-to-end golden connection captures.
+# Promoted on 2026-08-07 after SMP, ATT, CCC, and five notifications decoded.
 
 [python]
 version = "3.11.0"
@@ -35,6 +34,17 @@ extcap = "nrfutil ble-sniffer 0.20.0"
 
 [golden_test_firmware]
 peripheral_jlink = "1050244398"
-peripheral_sha256 = "7a7fe31fd214092b732e420460938c3604369bdc10c9983af5e699ed4157d2dc"
+peripheral_sha256 = "99947feb1f2bdd3219f4ca3f11b7b0c96f001185b2303b83bc1fc8f96441d910"
 central_jlink = "683519772"
-central_sha256 = "3b4567fdcaefe26bdd0aed3b97a897f951b92ac655166d39b13663c7bf4565a2"
+central_sha256 = "e0cb04d1d8dbf8668a7b84967e5565d79f5e97290633fa0d2bf4cc58f1020457"
+
+[golden_connection_capture]
+status = "passed"
+captured_at = "2026-08-07"
+private_path = "captures/private/golden-connection-final-2026-08-07.pcap"
+sha256 = "ff3abed59945f2ba1c3df1a08f3dfcce4fdf6f383bd5ba842f54586ef9ef03ec"
+packets = 1207
+duration_seconds = 22.015057
+smp_packets = 9
+att_packets = 17
+notifications = 5
