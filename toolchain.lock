@@ -6,6 +6,12 @@
 version = "3.11.0"
 environment = ".venv"
 
+[ncs]
+version = "v3.3.4"
+install_path = "C:\\ncs\\v3.3.4"
+toolchain_bundle = "936afb6332"
+board_target = "nrf52840dk/nrf52840"
+
 [hardware]
 board = "nRF52840 Dongle (PCA10059)"
 usb_vid = "1915"
@@ -26,3 +32,9 @@ firmware = "nRF Sniffer for Bluetooth LE 4.1.1"
 status = "installed"
 version = "4.6.7"
 extcap = "nrfutil ble-sniffer 0.20.0"
+
+[golden_test_firmware]
+peripheral_jlink = "1050244398"
+peripheral_sha256 = "7a7fe31fd214092b732e420460938c3604369bdc10c9983af5e699ed4157d2dc"
+central_jlink = "683519772"
+central_sha256 = "125aec8c746181dbc0b206c77973c73fe9836d6f15f19aff8be4a835a97a391a"

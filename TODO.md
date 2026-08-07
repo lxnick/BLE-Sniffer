@@ -1,6 +1,8 @@
 # TODO
 
 - [x] 準備可控制的 BLE Central 與 Peripheral 測試組合，並依 J-Link 序號固定角色。
+- [x] 建置並驗證 Peripheral firmware，啟動後廣播名稱為 `BLE-SNIFFER-P`。
+- [ ] 將已建置的 Central firmware 燒錄至 J-Link `683519772`（目前板子離線）。
 - [ ] 擷取完整流程：Advertising → Connect → Pairing → GATT Read/Write/Notify → Disconnect。
 - [ ] 將 capture 去識別化，建立 golden capture 與預期解析結果。
 - [ ] 建立 Python package 骨架及鎖定依賴，所有操作使用專案 `.venv`。
