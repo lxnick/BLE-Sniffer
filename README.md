@@ -47,7 +47,8 @@ powershell -ExecutionPolicy Bypass -File .\scripts\check_prerequisites.ps1
 - [x] 將 Dongle 進入 DFU，燒錄官方 sniffer firmware
 - [x] 建立兩台 BLE 測試裝置並依 J-Link 序號分配 Central/Peripheral 角色
 - [x] 建置並燒錄 Peripheral 測試 firmware（`1050244398`）
-- [x] 建置 Central 測試 firmware（`683519772`；待板子重新連線後燒錄）
+- [x] 建置、燒錄並驗證 Central 測試 firmware（`683519772`）
+- [x] 實機驗證 Pairing、GATT Write/Read、5 次 Notify 與 Disconnect 測試序列
 - [ ] 保存第一份完整連線 golden capture
 - [x] 記錄 Dongle USB/COM 識別資訊與 advertising smoke capture 結果
 - [x] 確認 smoke capture 的 link type、metadata 與 Wireshark 解碼結果

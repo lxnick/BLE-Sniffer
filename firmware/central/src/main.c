@@ -54,7 +54,9 @@ static void device_found(const bt_addr_le_t *addr, int8_t rssi, uint8_t type,
 	int err;
 
 	if (default_conn != NULL ||
-	    (type != BT_GAP_ADV_TYPE_ADV_IND && type != BT_GAP_ADV_TYPE_ADV_DIRECT_IND)) {
+	    (type != BT_GAP_ADV_TYPE_ADV_IND &&
+	     type != BT_GAP_ADV_TYPE_ADV_DIRECT_IND &&
+	     type != BT_GAP_ADV_TYPE_SCAN_RSP)) {
 		return;
 	}
 
@@ -94,7 +96,7 @@ static uint8_t notify_callback(struct bt_conn *conn,
 	if (notification_count >= 5) {
 		LOG_INF("Golden sequence complete; disconnecting");
 		bt_conn_disconnect(conn, BT_HCI_ERR_REMOTE_USER_TERM_CONN);
-		return BT_GATT_ITER_STOP;
+		return BT_GATT_ITER_CONTINUE;
 	}
 
 	return BT_GATT_ITER_CONTINUE;
@@ -110,6 +112,9 @@ static uint8_t discover_ccc(struct bt_conn *conn,
 		LOG_ERR("CCC descriptor not found");
 		memset(params, 0, sizeof(*params));
 		return BT_GATT_ITER_STOP;
+	}
+	if (bt_uuid_cmp(attr->uuid, BT_UUID_GATT_CCC) != 0) {
+		return BT_GATT_ITER_CONTINUE;
 	}
 
 	subscribe_params.notify = notify_callback;
@@ -144,7 +149,7 @@ static uint8_t read_callback(struct bt_conn *conn, uint8_t err,
 	}
 
 	memset(&discover_params, 0, sizeof(discover_params));
-	discover_params.uuid = BT_UUID_GATT_CCC;
+	discover_params.uuid = NULL;
 	discover_params.func = discover_ccc;
 	discover_params.start_handle = value_handle + 1;
 	discover_params.end_handle = service_end_handle;

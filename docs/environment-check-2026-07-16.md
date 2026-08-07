@@ -49,7 +49,7 @@ nRF52840 Dongle 的 USB 與 Nordic DFU bootloader 正常，可以作為本專案
 1. ~~準備一組可控制的 BLE peripheral/central。~~（已完成，見上方角色分配）
 2. ~~建置 Peripheral/Central EVK 對應 firmware。~~（已完成；NCS v3.3.4）
 3. ~~燒錄並驗證 Peripheral firmware。~~（已完成；`BLE-SNIFFER-P` 正常廣播）
-4. 將 Central firmware 燒錄至 J-Link `000683519772`；2026-08-07 建置完成時該板離線。
+4. ~~將 Central firmware 燒錄至 J-Link `000683519772`。~~（已完成）
 5. 從配對或建立連線前開始擷取，取得完整 connection capture。
 6. 將去識別化的 capture 納入 regression fixture。
 
@@ -58,9 +58,11 @@ nRF52840 Dongle 的 USB 與 Nordic DFU bootloader 正常，可以作為本專案
 | 角色 | 狀態 | 映像 SHA-256 |
 |---|---|---|
 | Peripheral `1050244398` | 已建置、燒錄、verify；UART 確認 `Advertising as BLE-SNIFFER-P` | `7a7fe31fd214092b732e420460938c3604369bdc10c9983af5e699ed4157d2dc` |
-| Central `683519772` | 已建置；板子目前離線，尚未燒錄 | `125aec8c746181dbc0b206c77973c73fe9836d6f15f19aff8be4a835a97a391a` |
+| Central `683519772` | 已建置、燒錄、verify；端到端序列通過 | `3b4567fdcaefe26bdd0aed3b97a897f951b92ac655166d39b13663c7bf4565a2` |
 
 預期自動測試序列：Advertising → Connect → Just Works Pairing → GATT Write → GATT Read → 5 次 Notify → Disconnect。
+
+2026-08-07 實機 UART 驗證已完整觀察到上述序列；斷線原因為 Central 主動終止（`0x16`），之後 Central 會重新開始掃描。
 
 ## 已解除的阻塞
 
