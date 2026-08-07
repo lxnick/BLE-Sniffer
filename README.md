@@ -53,6 +53,16 @@ powershell -ExecutionPolicy Bypass -File .\scripts\check_prerequisites.ps1
 - [x] 記錄 Dongle USB/COM 識別資訊與 advertising smoke capture 結果
 - [x] 確認 smoke capture 的 link type、metadata 與 Wireshark 解碼結果
 
+## Host package 開發
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s host\tests -v
+.\.venv\Scripts\ble-sniffer.exe --version
+```
+
+目前 Phase 1 已建立正規化資料模型、capture lifecycle 狀態機，以及可由
+Wireshark/tshark 讀取的 Nordic BLE PCAPNG writer。
+
 ## 原則
 
 - 原始封包永遠可保存；分析結果不可取代 PCAPNG。

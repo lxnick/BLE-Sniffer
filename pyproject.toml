@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ble-sniffer"
+version = "0.1.0"
+description = "Host tooling for Nordic nRF52840 BLE captures"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+ble-sniffer = "ble_sniffer.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "host/src"}
+
+[tool.setuptools.packages.find]
+where = ["host/src"]
+

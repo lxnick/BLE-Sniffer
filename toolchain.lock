@@ -2,7 +2,7 @@
 # Promoted on 2026-08-07 after SMP, ATT, CCC, and five notifications decoded.
 
 [python]
-version = "3.11.0"
+version = "3.12.13"
 environment = ".venv"
 
 [ncs]
