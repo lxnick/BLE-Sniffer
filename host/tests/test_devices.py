@@ -28,9 +28,23 @@ class DeviceDiscoveryTests(unittest.TestCase):
         self.assertEqual([(item.stable_id, item.port) for item in result], [("C6C0", "COM15")])
 
     def test_all_includes_devkit_and_normalizes_leading_zeroes(self) -> None:
-        devices = [{"serialNumber": "00105", "serialPorts": [{"comName": "COM8"}], "usb": {"product": "J-Link"}}]
+        devices = [
+            {
+                "serialNumber": "00105",
+                "serialPorts": [{"comName": "COM8"}],
+                "traits": {"devkit": True, "jlink": True},
+                "usb": {"product": "J-Link"},
+            },
+            {
+                "serialNumber": "STM32",
+                "serialPorts": [{"comName": "COM4"}],
+                "traits": {"devkit": False, "jlink": False, "nordicUsb": False},
+                "usb": {"product": "STM32 Virtual ComPort"},
+            },
+        ]
         line = json.dumps({"type": "info", "data": {"devices": devices}})
         result = discover_devices(nrfutil="nrfutil", include_all=True, runner=lambda _: completed(line))
+        self.assertEqual(len(result), 1)
         self.assertEqual(result[0].stable_id, "105")
 
     def test_command_failure_is_reported(self) -> None:
@@ -40,4 +54,3 @@ class DeviceDiscoveryTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

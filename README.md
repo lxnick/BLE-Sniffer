@@ -66,7 +66,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\check_prerequisites.ps1
 
 目前 Phase 1 已建立正規化資料模型、capture lifecycle 狀態機，以及可由
 Wireshark/tshark 讀取的 Nordic BLE PCAPNG writer。`devices` 預設只列出相容
-sniffer；`--all` 可顯示 nRF Util 枚舉的其他序列裝置。`doctor` 任一必要檢查
+sniffer；`--all` 可顯示本專案相關的 Nordic EVK，但排除其他廠牌的序列裝置。`doctor` 任一必要檢查
 失敗時回傳 exit code 1；裝置列舉錯誤為 2，找不到 sniffer 為 3。
 
 ## 原則

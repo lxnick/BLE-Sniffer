@@ -49,7 +49,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--version", action="version", version="ble-sniffer 0.1.0")
     subparsers = parser.add_subparsers(dest="command", required=True)
     devices_parser = subparsers.add_parser("devices", help="list BLE sniffer devices")
-    devices_parser.add_argument("--all", action="store_true", help="include non-sniffer devices")
+    devices_parser.add_argument("--all", action="store_true", help="include Nordic EVKs")
     devices_parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")
     doctor_parser = subparsers.add_parser("doctor", help="check host prerequisites")
     doctor_parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")

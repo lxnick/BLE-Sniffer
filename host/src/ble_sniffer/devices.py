@@ -65,6 +65,15 @@ def is_sniffer(raw: dict[str, object]) -> bool:
     )
 
 
+def is_nordic_device(raw: dict[str, object]) -> bool:
+    if is_sniffer(raw):
+        return True
+    traits = raw.get("traits")
+    return isinstance(traits, dict) and any(
+        bool(traits.get(name)) for name in ("devkit", "jlink", "nordicUsb", "seggerUsb")
+    )
+
+
 def discover_devices(
     *, nrfutil: str | None = None, include_all: bool = False, runner: RunCommand = _run
 ) -> list[DeviceInfo]:
@@ -78,6 +87,8 @@ def discover_devices(
 
     normalized: list[DeviceInfo] = []
     for raw in _extract_devices(completed.stdout):
+        if include_all and not is_nordic_device(raw):
+            continue
         if not include_all and not is_sniffer(raw):
             continue
         ports = raw.get("serialPorts", [])
@@ -89,4 +100,3 @@ def discover_devices(
         stable_id = str(raw.get("serialNumber", "")).lstrip("0") or "0"
         normalized.append(DeviceInfo(stable_id, ",".join(port_names), str(product)))
     return sorted(normalized, key=lambda device: (device.product, device.stable_id))
-
