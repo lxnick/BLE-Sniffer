@@ -58,10 +58,16 @@ powershell -ExecutionPolicy Bypass -File .\scripts\check_prerequisites.ps1
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s host\tests -v
 .\.venv\Scripts\ble-sniffer.exe --version
+.\.venv\Scripts\ble-sniffer.exe devices
+.\.venv\Scripts\ble-sniffer.exe devices --all --json
+.\.venv\Scripts\ble-sniffer.exe doctor
+.\.venv\Scripts\ble-sniffer.exe doctor --json
 ```
 
 目前 Phase 1 已建立正規化資料模型、capture lifecycle 狀態機，以及可由
-Wireshark/tshark 讀取的 Nordic BLE PCAPNG writer。
+Wireshark/tshark 讀取的 Nordic BLE PCAPNG writer。`devices` 預設只列出相容
+sniffer；`--all` 可顯示 nRF Util 枚舉的其他序列裝置。`doctor` 任一必要檢查
+失敗時回傳 exit code 1；裝置列舉錯誤為 2，找不到 sniffer 為 3。
 
 ## 原則
 

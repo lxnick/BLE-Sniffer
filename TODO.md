@@ -6,7 +6,8 @@
 - [x] 擷取完整流程：Advertising → Connect → Pairing → GATT Read/Write/Notify → Disconnect。
 - [ ] 將 capture 去識別化，建立 golden capture 與預期解析結果。
 - [x] 建立 Python package 骨架及鎖定依賴（目前零 runtime dependencies），所有操作使用專案 `.venv`。
-- [ ] 實作 `devices`、`doctor`、`capture` CLI 指令。
+- [x] 實作 `devices` 與 `doctor` CLI 指令（含文字/JSON 輸出與穩定結束碼）。
+- [ ] 實作 `capture` CLI 指令。
 - [ ] 實作穩定的裝置識別、timeout、Ctrl+C、熱插拔與錯誤處理。
 - [ ] 將擷取結果保存為 PCAP/PCAPNG，並用 capinfos/tshark 自動驗證。
 - [ ] 實作離線分析與 JSON 報告，優先重用 tshark dissector。
