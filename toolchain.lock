@@ -1,0 +1,28 @@
+# Provisional M0 baseline discovered and verified with an advertising smoke capture
+# on 2026-07-16. Keep these versions fixed while producing the first end-to-end
+# golden connection capture; promote the baseline after that capture passes.
+
+[python]
+version = "3.11.0"
+environment = ".venv"
+
+[hardware]
+board = "nRF52840 Dongle (PCA10059)"
+usb_vid = "1915"
+dfu_pid = "521F"
+dfu_serial = "D32D7EF97D16"
+application_pid = "522A"
+application_serial = "C6C01676D0F97A4E"
+application_port = "COM15"
+
+[nrfutil]
+status = "installed"
+version = "8.2.0"
+ble_sniffer = "0.20.0"
+device = "2.19.4"
+firmware = "nRF Sniffer for Bluetooth LE 4.1.1"
+
+[wireshark]
+status = "installed"
+version = "4.6.7"
+extcap = "nrfutil ble-sniffer 0.20.0"

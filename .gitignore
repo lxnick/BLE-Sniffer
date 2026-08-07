@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Captures can contain device identifiers, payloads, and keys.
+*.pcap
+*.pcapng
+captures/private/
+
+# Runtime output
+logs/
+reports/
+
