@@ -37,6 +37,8 @@
 
 目前工作站與 Dongle 的點檢結果見 [2026-07-16 環境點檢](docs/environment-check-2026-07-16.md)。可重跑：
 
+最新進度、已知問題與接續步驟見 [2026-08-07 進度交接](docs/status-2026-08-07.md)。
+
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\check_prerequisites.ps1
 ```
