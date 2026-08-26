@@ -20,6 +20,15 @@ application_pid = "522A"
 application_serial = "C6C01676D0F97A4E"
 application_port = "COM15"
 
+[hardware.second_sniffer]
+board = "nRF52840 Dongle (PCA10059)"
+dfu_serial = "F0A6BED652D8"
+application_serial = "6B52D784B9E3B905"
+application_port = "COM28"
+firmware_version = "4.1.1"
+firmware_sha256 = "a5ec3b26bfe1d5db7bf77c4fb0d4470924778ccf440ea846965b8a2bcb719048"
+smoke_capture_sha256 = "d7318c1621e946c6e018cd226dc87787fb90d54b9c331ae57479ed92f80eae59"
+
 [nrfutil]
 status = "installed"
 version = "8.2.0"
